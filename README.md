@@ -7,10 +7,6 @@ The application is built using **Next.js (App Router)** and communicates with a 
 
 ---
 
-## 🔗 Live Admin Panel
-
-https://portfolio-cms-admin-eta.vercel.app/
-
 ## 🛠 Tech Stack
 
 - **Framework:** Next.js (App Router)
