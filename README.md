@@ -3,7 +3,7 @@
 This is the **CMS Admin Panel** for managing content of my personal portfolio website.  
 It allows an authenticated admin to **create, update, and delete** portfolio data such as **blogs, projects, experience, skills, services, and testimonials**.
 
-The application is built using **Next.js (App Router)** and communicates with a **Node.js + Express backend** deployed on Render.
+The application is built using **Next.js (App Router)** and communicates with a **Node.js + Express backend** deployed on Vercel.
 
 ---
 
