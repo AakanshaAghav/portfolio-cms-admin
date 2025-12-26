@@ -44,22 +44,25 @@ export default function AboutPage() {
     setLoading(true);
 
     try {
+      // ✅ FormData is created HERE
+      const formData = new FormData();
+      formData.append("content", content);
+      formData.append("resume_url", resumeUrl);
+
+      if (imageFile) {
+        formData.append("image", imageFile); // 👈 laptop file
+      }
+
+      // ✅ FormData is sent HERE
       const res = await fetch(`${API_BASE}/api/about`, {
         method: "PUT",
         headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`, // ❗ no Content-Type
         },
-        body: JSON.stringify({
-          content,
-          image_url: imageUrl,
-          resume_url: resumeUrl,
-        }),
+        body: formData, // 👈 THIS is where it goes
       });
 
-      if (!res.ok) {
-        throw new Error("Failed to update About section");
-      }
+      if (!res.ok) throw new Error("Failed to update");
 
       const updated = await res.json();
       setCurrentAbout(updated);
@@ -146,11 +149,10 @@ export default function AboutPage() {
               Profile Image URL (Supabase)
             </label>
             <input
-              type="text"
+              type="file"
               className="w-full border p-3 rounded-lg bg-gray-50"
-              value={imageUrl}
-              onChange={(e) => setImageUrl(e.target.value)}
-              placeholder="https://supabase.co/..."
+              accept="image/*"
+              onChange={(e) => setImageFile(e.target.files[0])}
             />
             {imageUrl && (
               <img
