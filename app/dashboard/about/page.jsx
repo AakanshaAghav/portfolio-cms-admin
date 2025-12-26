@@ -10,6 +10,8 @@ export default function AboutPage() {
   const [loading, setLoading] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
+  const [imageFile, setImageFile] = useState(null);
+
   const token =
     typeof window !== "undefined" ? localStorage.getItem("token") : null;
 
