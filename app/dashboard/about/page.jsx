@@ -146,20 +146,33 @@ export default function AboutPage() {
           </div>
 
           {/* IMAGE URL */}
+          {/* IMAGE UPLOAD */}
           <div>
             <label className="block text-sm font-bold mb-2">
-              Profile Image URL (Supabase)
+              Profile Image
             </label>
+
             <input
               type="file"
               className="w-full border p-3 rounded-lg bg-gray-50"
               accept="image/*"
               onChange={(e) => setImageFile(e.target.files[0])}
             />
-            {imageUrl && (
+
+            {/* Preview selected file */}
+            {imageFile && (
+              <img
+                src={URL.createObjectURL(imageFile)}
+                alt="Preview"
+                className="mt-4 w-32 h-32 rounded-xl object-cover border"
+              />
+            )}
+
+            {/* Show existing image if no new file selected */}
+            {!imageFile && imageUrl && (
               <img
                 src={imageUrl}
-                alt="Preview"
+                alt="Current"
                 className="mt-4 w-32 h-32 rounded-xl object-cover border"
               />
             )}
